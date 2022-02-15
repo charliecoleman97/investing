@@ -1,9 +1,13 @@
 from datetime import date
-import pandas as pd
 import variables
 import os
 from os import listdir
 from os.path import isfile, join
+import numpy as np
+import yfinance as yf
+import pandas as pd 
+import sys
+
 '''
 This script will update all the stocks CSVs with daily stock data - works better than having to redownload the
 CSVs again each time to update them. It will also add Span A, Span B columns as well
@@ -34,4 +38,7 @@ len(tickers)
 
 # We want to find the last row in the dataframe (most recent date) and store it as
 # dataframe 
+new_df = get_stock_df_from_csv(tickers[10])
+new_df.head()
 
+print("It worked")
