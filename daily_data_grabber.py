@@ -40,7 +40,7 @@ for ticker in tickers:
         start_date = (datetime.strptime(old_df.index[-1], "%Y-%m-%d") + timedelta(days=1)).strftime("%Y-%m-%d")
         end_date = datetime.today().strftime("%Y-%m-%d")
 
-        new_df = yf.download("A", start=start_date, end=end_date)
+        new_df = yf.download(ticker, start=start_date, end=end_date)
         new_df = new_df.drop(columns="Adj Close")
         new_df = new_df.reset_index()
         new_df["Date"] = new_df["Date"].apply(lambda x: x.strftime('%Y-%m-%d'))
