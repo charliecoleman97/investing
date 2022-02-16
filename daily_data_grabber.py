@@ -1,8 +1,6 @@
 from datetime import datetime, date, timedelta
 import variables
 import os
-# from os import listdir
-# from os.path import isfile, join
 import yfinance as yf
 import pandas as pd 
 import columns_modules as cm
@@ -10,6 +8,8 @@ import columns_modules as cm
 '''
 This script will update all the stocks CSVs with daily stock data - works better than having to redownload the
 CSVs again each time to update them. It will also add Span A, Span B columns as well
+
+Look at daily_data_grabber.ipynb for a more documented version of this script
 '''
 # get Path to csv
 PATH = variables.stocks
