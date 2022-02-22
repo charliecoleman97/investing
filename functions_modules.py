@@ -25,9 +25,6 @@ def save_to_csv_from_yahoo(folder, ticker):
         # Get historical closing price data 
         df = stock.history(period="5y")
 
-        # Wait  2 seconds
-        time.sleep(2)
-
         # Remove the period for saving the file name
         # Save data to a CSV file 
         # File to save to 
@@ -38,7 +35,24 @@ def save_to_csv_from_yahoo(folder, ticker):
     except Exception as ex:
         print("Couldn't Get Data :", ticker)
 
+def save_to_df_from_yahoo(ticker, period='5y'):
+    '''Donwloads data from yfinacnce and saves to df'''
+    stock = yf.Ticker(ticker)
+    df = stock.history(period=period)
+    return df
+
 # CALCULATION FUNCTIONS 
+def get_stock_df_from_csv(ticker):
+    '''Reads CSV as df'''
+    import variables
+    PATH = variables.stocks
+    try:
+        df = pd.read_csv(PATH + ticker + ".csv", index_col=0)
+    except FileNotFoundError:
+        print("File is not here" )
+        print('Expected file: ' + PATH + ticker + ".csv")
+    else: 
+        return df 
 
 def add_daily_return_to_df(df):
     '''Adds daily returns column to df'''
