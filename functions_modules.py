@@ -90,6 +90,14 @@ def add_Ichimoku(df):
     df['Lagging'] = df['Close'].shift(-26)
 
     return df
+    
+def add_all_columns(ticker):
+    df = save_to_df_from_yahoo(ticker)
+    df = add_daily_return_to_df(df)
+    df = add_cum_return_to_df(df)
+    df = add_bollinger_bands(df)
+    df = add_Ichimoku(df)
+    return df
 
 # PLOTTING FUNCTIONS
 
