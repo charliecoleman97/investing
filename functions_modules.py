@@ -91,7 +91,7 @@ def add_Ichimoku(df):
 
     return df
     
-def add_all_columns(ticker):
+def get_full_df_from_ticker(ticker):
     df = save_to_df_from_yahoo(ticker)
     df = add_daily_return_to_df(df)
     df = add_cum_return_to_df(df)
@@ -190,3 +190,7 @@ def get_Ichimoku(df):
 
     fig.show()
 
+
+def take_ticker_and_make_ichimoku_plot(ticker):
+    df = get_full_df_from_ticker(ticker)
+    get_Ichimoku(df)
