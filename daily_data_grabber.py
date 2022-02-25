@@ -3,7 +3,7 @@ import variables
 import os
 import yfinance as yf
 import pandas as pd 
-import columns_modules as cm
+import functions as fn
 
 '''
 This script will update all the stocks CSVs with daily stock data - works better than having to redownload the
@@ -50,10 +50,10 @@ for ticker in tickers:
         final_df = old_df.append(new_df)
         final_df.set_index("Date")
 
-        df = cm.add_daily_return_to_df(final_df)
-        df = cm.add_cum_return_to_df(df)
-        df = cm.add_bollinger_bands(df)
-        df = cm.add_Ichimoku(df)   
+        df = fn.add_daily_return_to_df(final_df)
+        df = fn.add_cum_return_to_df(df)
+        df = fn.add_bollinger_bands(df)
+        df = fn.add_Ichimoku(df)   
         df.to_csv(PATH + ticker + '.csv')
 
     except Exception as ex:
